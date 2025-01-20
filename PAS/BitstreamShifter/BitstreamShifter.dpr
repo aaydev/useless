@@ -6,7 +6,6 @@ uses
 function ShiftBitsRight(const InputBytes: TBytes; BitsToShift: Integer): TBytes;
 var
   i: Integer;
-  Bit: Byte;
 begin
   if BitsToShift < 0 then
     raise Exception.Create('BitsToShift must be non-negative');
@@ -47,7 +46,6 @@ end;
 function ShiftBitsLeft(const InputBytes: TBytes; BitsToShift: Integer): TBytes;
 var
   i: Integer;
-  b: Word;
 begin
   if BitsToShift < 0 then
     raise Exception.Create('BitsToShift must be non-negative');
@@ -83,10 +81,8 @@ end;
 
 procedure ShiftBitstream(const InputFile, OutputFile: string; ShiftValue: Integer);
 var
-  InputStream, OutputStream: TMemoryStream;
   FileStream: TFileStream;
   InputBytes, OutputBytes: TBytes;
-  I, Shift: Integer;
 begin
   // Read the file into a byte array
   FileStream := TFileStream.Create(InputFile, fmOpenRead);
